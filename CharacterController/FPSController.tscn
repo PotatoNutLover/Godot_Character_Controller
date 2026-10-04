@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c1u15euqcmdel"]
+
+[ext_resource type="Script" uid="uid://djn62icl8ts14" path="res://CharacterController/fps_controller.gd" id="1_d7bqw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uj0h6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uj0h6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lr60t"]
+albedo_color = Color(0.8031115, 0.4659841, 0.51384145, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uj0h6"]
+size = Vector3(0.6826172, 0.27392578, 0.64086914)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7bqw"]
+albedo_color = Color(0.38467237, 0.64974654, 0.7342943, 1)
+
+[node name="FPSController" type="CharacterBody3D" unique_id=413111828]
+script = ExtResource("1_d7bqw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1180331826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_uj0h6")
+
+[node name="WorldModel" type="Node3D" parent="." unique_id=2045487580]
+unique_name_in_owner = true
+
+[node name="Body" type="MeshInstance3D" parent="WorldModel" unique_id=1851105595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_uj0h6")
+surface_material_override/0 = SubResource("StandardMaterial3D_lr60t")
+
+[node name="Glasses" type="MeshInstance3D" parent="WorldModel" unique_id=2111929661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4864137, -0.21961069)
+mesh = SubResource("BoxMesh_uj0h6")
+surface_material_override/0 = SubResource("StandardMaterial3D_d7bqw")
+
+[node name="Head" type="Node3D" parent="." unique_id=1098496034]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5854912, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=504553144]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03613448, 0)
+cull_mask = 1048573
